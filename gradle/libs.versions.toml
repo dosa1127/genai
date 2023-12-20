@@ -1,5 +1,8 @@
 [versions]
 agp = "8.2.0-alpha13"
+hilt-android = "2.44"
+hilt-android-compiler = "2.44"
+hilt-android-plugin = "2.44"
 kotlin = "1.8.21"
 core-ktx = "1.9.0"
 junit = "4.13.2"
@@ -16,6 +19,8 @@ secrets-gradle-plugin = "2.0.1"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt-android" }
+hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt-android-compiler" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-ext-junit" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
@@ -31,4 +36,5 @@ secrets-gradle-plugin = { module = "com.google.android.libraries.mapsplatform.se
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+daggerHiltAndroid = { id = "com.google.dagger.hilt.android", version.ref = "hilt-android-plugin" }
 
