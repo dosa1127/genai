@@ -56,6 +56,7 @@ dependencies {
     implementation(libs.generativeai)
     kapt(libs.hilt.android.compiler)
     implementation(libs.timber)
+    implementation(libs.glide)
 
     testImplementation(libs.junit)
 
