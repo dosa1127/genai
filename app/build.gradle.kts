@@ -53,6 +53,7 @@ dependencies {
     implementation(libs.navigation.fragment.ktx)
     implementation(libs.navigation.ui.ktx)
     implementation(libs.hilt.android)
+    implementation(libs.generativeai)
     kapt(libs.hilt.android.compiler)
     implementation(libs.timber)
 
