@@ -32,6 +32,8 @@ class DashboardFragment : Fragment() {
         dashboardViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
+
+        dashboardViewModel.chat()
         return root
     }
 
