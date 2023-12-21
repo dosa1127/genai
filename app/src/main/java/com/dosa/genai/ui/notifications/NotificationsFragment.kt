@@ -15,9 +15,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class NotificationsFragment : Fragment() {
 
     private var _binding: FragmentNotificationsBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -25,23 +22,22 @@ class NotificationsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val notificationsViewModel =
-            ViewModelProvider(this).get(NotificationsViewModel::class.java)
+        val viewModel = ViewModelProvider(this).get(NotificationsViewModel::class.java)
 
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val textView: TextView = binding.text
-        notificationsViewModel.text.observe(viewLifecycleOwner) {
+        viewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
 
         val imageView: ImageView = binding.image
-        notificationsViewModel.image.observe(viewLifecycleOwner) {
+        viewModel.image.observe(viewLifecycleOwner) {
             imageView.setImageBitmap(it)
         }
 
-        notificationsViewModel.generateStory()
+        viewModel.generateStory()
         return root
     }
 
