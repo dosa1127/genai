@@ -1,6 +1,5 @@
-package com.dosa.genai.ui.notifications
+package com.dosa.genai.ui.critique
 
-import android.graphics.Bitmap
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -12,21 +11,16 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class NotificationsViewModel
+class CritiqueViewModel
 @Inject constructor(private val storyRepository: StoryRepository) : ViewModel() {
 
-    private val _image = MutableLiveData<Bitmap>()
-    val image: LiveData<Bitmap> = _image
-
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is notifications Fragment"
-    }
+    private val _text = MutableLiveData<String>()
     val text: LiveData<String> = _text
 
-    fun generateStory() {
+    fun chat() {
         viewModelScope.launch(Dispatchers.IO) {
-            _image.postValue(storyRepository.getCreatedStory()?.pic)
-            _text.postValue(storyRepository.getCreatedStory()?.revisedStory)
+            val story = storyRepository.getCreatedStory()?.critiques
+            _text.postValue(story)
         }
     }
 }

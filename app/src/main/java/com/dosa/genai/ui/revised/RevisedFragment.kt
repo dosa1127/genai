@@ -1,4 +1,4 @@
-package com.dosa.genai.ui.home
+package com.dosa.genai.ui.revised
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,13 +8,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.dosa.genai.databinding.FragmentHomeBinding
+import com.dosa.genai.databinding.FragmentRevisedBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeFragment : Fragment() {
+class RevisedFragment : Fragment() {
 
-    private var _binding: FragmentHomeBinding? = null
+    private var _binding: FragmentRevisedBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -22,9 +22,9 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
+        val viewModel = ViewModelProvider(this).get(RevisedViewModel::class.java)
 
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentRevisedBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val textView: TextView = binding.text

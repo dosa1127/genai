@@ -1,19 +1,20 @@
-package com.dosa.genai.ui.dashboard
+package com.dosa.genai.ui.original
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.dosa.genai.databinding.FragmentDashboardBinding
+import com.dosa.genai.databinding.FragmentOriginalBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DashboardFragment : Fragment() {
+class OriginalFragment : Fragment() {
 
-    private var _binding: FragmentDashboardBinding? = null
+    private var _binding: FragmentOriginalBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -21,9 +22,9 @@ class DashboardFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val viewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
+        val viewModel = ViewModelProvider(this).get(OriginalViewModel::class.java)
 
-        _binding = FragmentDashboardBinding.inflate(inflater, container, false)
+        _binding = FragmentOriginalBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val textView: TextView = binding.text
@@ -31,7 +32,12 @@ class DashboardFragment : Fragment() {
             textView.text = it
         }
 
-        viewModel.chat()
+        val imageView: ImageView = binding.image
+        viewModel.image.observe(viewLifecycleOwner) {
+            imageView.setImageBitmap(it)
+        }
+
+        viewModel.generateStory()
         return root
     }
 

@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_original">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.dosa.genai.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/navigation_original"
+        android:name="com.dosa.genai.ui.original.OriginalFragment"
+        android:label="@string/title_original"
+        tools:layout="@layout/fragment_original" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.dosa.genai.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_critique"
+        android:name="com.dosa.genai.ui.critique.CritiqueFragment"
+        android:label="@string/title_critique"
+        tools:layout="@layout/fragment_critique" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.dosa.genai.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_revised"
+        android:name="com.dosa.genai.ui.revised.RevisedFragment"
+        android:label="@string/title_revised"
+        tools:layout="@layout/fragment_revised" />
 </navigation>

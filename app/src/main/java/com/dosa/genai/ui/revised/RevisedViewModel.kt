@@ -1,4 +1,4 @@
-package com.dosa.genai.ui.home
+package com.dosa.genai.ui.revised
 
 import android.graphics.Bitmap
 import androidx.lifecycle.LiveData
@@ -12,24 +12,19 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel
+class RevisedViewModel
 @Inject constructor(private val storyRepository: StoryRepository) : ViewModel() {
 
     private val _image = MutableLiveData<Bitmap>()
     val image: LiveData<Bitmap> = _image
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
-    }
+    private val _text = MutableLiveData<String>()
     val text: LiveData<String> = _text
 
     fun generateStory() {
         viewModelScope.launch(Dispatchers.IO) {
-            if (storyRepository.getCreatedStory() == null) {
-                storyRepository.genNewStory()
-            }
             _image.postValue(storyRepository.getCreatedStory()?.pic)
-            _text.postValue(storyRepository.getCreatedStory()?.originalStory)
+            _text.postValue(storyRepository.getCreatedStory()?.revisedStory)
         }
     }
 }
