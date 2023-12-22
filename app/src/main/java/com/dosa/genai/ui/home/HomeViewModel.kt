@@ -1,17 +1,22 @@
 package com.dosa.genai.ui.home
 
+import android.graphics.Bitmap
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.dosa.genai.data.text.GeminiManager
+import com.dosa.genai.data.repository.StoryRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class HomeViewModel : ViewModel() {
+@HiltViewModel
+class HomeViewModel
+@Inject constructor(private val storyRepository: StoryRepository) : ViewModel() {
 
-    private val geminiManager: GeminiManager = GeminiManager()
+    private val _image = MutableLiveData<Bitmap>()
+    val image: LiveData<Bitmap> = _image
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is home Fragment"
@@ -20,8 +25,11 @@ class HomeViewModel : ViewModel() {
 
     fun generateStory() {
         viewModelScope.launch(Dispatchers.IO) {
-            val story = geminiManager.gen("Write a short story about a magic backpack.")
-            _text.postValue(story)
+            if (storyRepository.getCreatedStory() == null) {
+                storyRepository.genNewStory()
+            }
+            _image.postValue(storyRepository.getCreatedStory()?.pic)
+            _text.postValue(storyRepository.getCreatedStory()?.originalStory)
         }
     }
 }
