@@ -1,4 +1,4 @@
-package com.dosa.genai.ai
+package com.dosa.genai.data.text
 
 import android.graphics.Bitmap
 import com.dosa.genai.BuildConfig
