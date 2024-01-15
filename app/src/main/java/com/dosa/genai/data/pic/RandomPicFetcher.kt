@@ -4,5 +4,5 @@ import android.graphics.Bitmap
 
 interface RandomPicFetcher {
 
-    fun getRandomPic(): Bitmap
+    suspend fun getRandomPic(): Bitmap
 }
