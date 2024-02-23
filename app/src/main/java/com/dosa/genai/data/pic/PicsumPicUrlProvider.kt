@@ -1,19 +1,11 @@
 package com.dosa.genai.data.pic
 
-import android.graphics.Bitmap
 import android.net.Uri
-import javax.inject.Inject
 import kotlin.random.Random
 
-class PicsumPicFetcher @Inject constructor(
-    private val bitmapDownloader: BitmapDownloader
-) : RandomPicFetcher {
+class PicsumPicUrlProvider : RandomPicUrlProvider {
 
-    override suspend fun getRandomPic(): Bitmap {
-        return bitmapDownloader.get(getRandomPicUrl())
-    }
-
-    private fun getRandomPicUrl(): String {
+    override suspend fun getRandomPicUrl(): String {
         return Uri.parse(PIC_SUM_URL)
             .buildUpon()
             .appendPath(IMAGE_SIZE)

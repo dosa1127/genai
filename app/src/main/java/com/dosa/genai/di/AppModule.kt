@@ -3,10 +3,12 @@ package com.dosa.genai.di
 import android.content.Context
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
-import com.dosa.genai.data.pic.GlideBitmapDownloader
 import com.dosa.genai.data.pic.BitmapDownloader
-import com.dosa.genai.data.pic.PicsumPicFetcher
+import com.dosa.genai.data.pic.DefaultPicFetcher
+import com.dosa.genai.data.pic.GlideBitmapDownloader
+import com.dosa.genai.data.pic.PicsumPicUrlProvider
 import com.dosa.genai.data.pic.RandomPicFetcher
+import com.dosa.genai.data.pic.RandomPicUrlProvider
 import com.dosa.genai.data.repository.StoryRepository
 import com.dosa.genai.data.text.GeminiManager
 import com.dosa.genai.data.text.GeminiStoryCreator
@@ -32,7 +34,14 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideRandomPicFetcher(picDownloader: BitmapDownloader): RandomPicFetcher = PicsumPicFetcher(picDownloader)
+    fun provideRandomPicUrlProvider(): RandomPicUrlProvider = PicsumPicUrlProvider()
+
+    @Singleton
+    @Provides
+    fun provideRandomPicFetcher(
+        picUrlProvider: RandomPicUrlProvider,
+        picDownloader: BitmapDownloader
+    ): RandomPicFetcher = DefaultPicFetcher(picUrlProvider, picDownloader)
 
     @Singleton
     @Provides

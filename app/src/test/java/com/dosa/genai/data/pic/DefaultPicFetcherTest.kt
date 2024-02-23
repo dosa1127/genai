@@ -12,17 +12,19 @@ import org.mockito.Mockito.mockStatic
 import org.mockito.Mockito.`when`
 import org.mockito.MockitoAnnotations
 
-class PicsumPicFetcherTest {
+class DefaultPicFetcherTest {
+    @Mock
+    private lateinit var picUrlProvider: RandomPicUrlProvider
     @Mock
     private lateinit var bitmapDownloader: BitmapDownloader
 
     // Class under test
-    private lateinit var picsumPicFetcher: PicsumPicFetcher
+    private lateinit var picFetcher: DefaultPicFetcher
 
     @Before
     fun setup() {
         MockitoAnnotations.openMocks(this)
-        picsumPicFetcher = PicsumPicFetcher(bitmapDownloader)
+        picFetcher = DefaultPicFetcher(picUrlProvider, bitmapDownloader)
     }
 
     @Test
@@ -30,19 +32,10 @@ class PicsumPicFetcherTest {
         val expectedUrl = "https://picsum.photos/360?random=1"
         val expectedBitmap: Bitmap = mock(Bitmap::class.java)
 
-        mockStatic(Uri::class.java)
-        val mockUri: Uri = mock(Uri::class.java)
-        val mockBuilder: Uri.Builder = mock(Uri.Builder::class.java)
-        `when`(Uri.parse(anyString())).thenReturn(mockUri)
-        `when`(mockUri.buildUpon()).thenReturn(mockBuilder)
-        `when`(mockBuilder.appendPath(anyString())).thenReturn(mockBuilder)
-        `when`(mockBuilder.appendQueryParameter(anyString(),anyString())).thenReturn(mockBuilder)
-        `when`(mockBuilder.build()).thenReturn(mockUri)
-        `when`(mockUri.toString()).thenReturn(expectedUrl)
-
+        `when`(picUrlProvider.getRandomPicUrl()).thenReturn(expectedUrl)
         `when`(bitmapDownloader.get(anyString())).thenReturn(expectedBitmap)
 
-        val actualBitmap: Bitmap = picsumPicFetcher.getRandomPic()
+        val actualBitmap: Bitmap = picFetcher.getRandomPic()
         assert(actualBitmap == expectedBitmap)
     }
 }
