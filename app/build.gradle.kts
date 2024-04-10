@@ -45,17 +45,19 @@ android {
 dependencies {
 
     implementation(libs.core.ktx)
+    implementation(libs.kotlinx.coroutines.core)
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.constraintlayout)
     implementation(libs.lifecycle.livedata.ktx)
     implementation(libs.lifecycle.viewmodel.ktx)
+    implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.navigation.fragment.ktx)
     implementation(libs.navigation.ui.ktx)
-    implementation(libs.hilt.android)
-    implementation(libs.generativeai)
     kapt(libs.hilt.android.compiler)
+    implementation(libs.hilt.android)
     implementation(libs.timber)
+    implementation(libs.generativeai)
     implementation(libs.glide)
 
     testImplementation(libs.junit)

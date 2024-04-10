@@ -1,12 +1,14 @@
 [versions]
-agp = "8.2.0-alpha13"
+agp = "8.3.0"
 kotlin = "1.8.21"
 core-ktx = "1.9.0"
+kotlinx-coroutines-core = "1.8.0"
 appcompat = "1.6.1"
 material = "1.10.0"
 constraintlayout = "2.1.4"
 lifecycle-livedata-ktx = "2.6.2"
 lifecycle-viewmodel-ktx = "2.6.2"
+lifecycle-runtime-ktx = "2.6.2"
 navigation-fragment-ktx = "2.7.5"
 navigation-ui-ktx = "2.7.5"
 secrets-gradle-plugin = "2.0.1"
@@ -21,7 +23,7 @@ androidx-test-ext-junit = "1.1.5"
 espresso-core = "3.5.1"
 test-runner = "1.0.2"
 androidxArchCore = "2.2.0"
-kotlinxCoroutines = "1.7.3"
+kotlinx-coroutines-android = "1.7.3"
 kotlinx-coroutines-test = "1.8.0-RC2"
 mockito-core = "4.3.1"
 mockito-inline = "4.11.0"
@@ -30,25 +32,27 @@ mockk = "1.13.9"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
+kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinx-coroutines-core" }
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycle-livedata-ktx" }
 lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle-viewmodel-ktx" }
+lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle-runtime-ktx" }
 navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigation-fragment-ktx" }
 navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigation-ui-ktx" }
 secrets-gradle-plugin = { module = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin", version.ref = "secrets-gradle-plugin" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt-android" }
 hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt-android-compiler" }
+timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 generativeai = { group = "com.google.ai.client.generativeai", name = "generativeai", version.ref = "generativeai" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
-timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-ext-junit" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
 runner = { module = "com.android.support.test:runner", version.ref = "test-runner" }
 androidx-archcore-testing = { group = "androidx.arch.core", name = "core-testing", version.ref = "androidxArchCore" }
-kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
+kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinx-coroutines-android" }
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinx-coroutines-test" }
 mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockito-core" }
 mockito-inline = { module = "org.mockito:mockito-inline", version.ref = "mockito-inline" }
